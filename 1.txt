@@ -1,0 +1,16 @@
+int findDuplicate(int* nums, int numsSize)
+{
+    int i;
+    long max=*(nums);
+    int count[100000]={0};
+    for(i=1;i<numsSize;i++)
+        if(max<*(nums+i))
+            max=*(nums+i);
+    for(i=0;i<numsSize;i++)
+    {
+        ++count[max-*(nums+i)];
+        if(count[max-*(nums+i)]==2)
+            break;
+    }
+    return *(nums+i);
+}
